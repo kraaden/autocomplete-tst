@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import autocomplete from 'autocompleter';
+import autocomplete, { AutocompleteSettings, AutocompleteItem, AutocompleteResult } from 'autocompleter';
 
 class App extends Component {
 
     componentDidMount() {
         var countries = [
-            { label: 'United Kingdom', value: 'UK' },
-            { label: 'United States', value: 'US' }
+            { label: 'United Kingdom (UK)', value: 'UK' },
+            { label: 'United States (US)', value: 'US' }
         ];
 
         autocomplete({
@@ -16,7 +16,7 @@ class App extends Component {
             fetch: function(text, update) {
                 text = text.toLowerCase();
                 // you can also use AJAX requests instead of preloaded data
-                var suggestions = countries.filter(n => n.label.toLowerCase().startsWith(text))
+                var suggestions = countries.filter(n => n.label.toLowerCase().indexOf(text) !== -1);
                 update(suggestions);
             },
             onSelect: function(item) {

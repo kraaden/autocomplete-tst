@@ -41,6 +41,7 @@ class App extends Component {
                     >
                         Learn React
           </a>
+          <span>Test:</span>
                     <input id="testautocomplete" />
                 </header>
             </div>
